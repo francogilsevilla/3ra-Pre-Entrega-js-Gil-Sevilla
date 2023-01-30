@@ -140,6 +140,13 @@ a:hover {
     text-decoration: underline;
 }
 
+.formulario label{
+    width: 100px;
+    height: auto;
+    color: black;
+    font-size: larger;
+}
+
 .formulario button{
     background-color: black;
     width: 100px;
