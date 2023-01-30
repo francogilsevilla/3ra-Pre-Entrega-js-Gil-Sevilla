@@ -8,6 +8,9 @@
 nav {
     display: flex;
     justify-content: space-around;
+    position: sticky;
+    z-index: 3;
+    top: 0;
 }
 
 ul {
@@ -21,7 +24,9 @@ ul {
 a {
     text-decoration: none;
     font-size: 2rem;
-    color: black;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
 }
 
 body {
@@ -81,6 +86,7 @@ a:hover {
 
 .tarjetas{
     width: 300px;
+    height: 450px;
     margin: 10px;
     background-color: black;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
