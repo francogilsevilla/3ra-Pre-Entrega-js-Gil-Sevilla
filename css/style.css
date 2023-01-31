@@ -93,28 +93,28 @@ a:hover {
     overflow: hidden;
 }
 
-.tarjetas img {
+.tarjetas_img {
     width: 100%;
     margin: 1px;
     padding: 3px;
     border-radius: 16px;
 }
 
-.tarjetas h3 {
+.tarjetas_h3 {
     font-size: 1.5em;
     margin: 10px;
     text-align: center;
     color: antiquewhite;
 }
 
-.tarjetas h4 {
+.tarjetas_h4 {
     font-size: 1.2em;
     margin: 10px;
     text-align: center;
     color: antiquewhite;
 }
 
-.tarjetas button {
+.tarjetas_button {
     background-color: grey;
     color: white;
     border-radius: 10px;
@@ -125,7 +125,7 @@ a:hover {
     margin: auto;
 }
 
-.tarjetas button:hover {
+.tarjetas_button:hover {
     background-color: green;
     scale: 1.5;
 }
