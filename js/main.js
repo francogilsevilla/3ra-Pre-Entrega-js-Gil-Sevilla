@@ -2,7 +2,7 @@ const productos_html = document.getElementById('contenedor_productos');
 
 const ver_carrito = document.getElementById('ver_carrito');
 
-const modal_container = document.getElementById('modal_contenedor');
+const carrito_contenedor = document.getElementById('carrito_contenedor');
 
 let carrito = []
 
@@ -26,37 +26,46 @@ productos.forEach((producto)=>{
     agregar_al_carrito.addEventListener("click", ()=>{
         carrito.push({
             id : producto.id,
-            imagen : producto.imagen,
             nombre: producto.nombre,
             precio: producto.precio,
+            imagen: producto.imagen,
         });
         console.log(carrito)
     });
 });
 
 ver_carrito.addEventListener("click", () =>{
+    carrito_contenedor.innerHTML = " ";
+    carrito_contenedor.style.display = "flex";
     
     const modal_header = document.createElement('div')
-    modal_header.className = 'modal_header'
+    modal_header.className = 'carrito_header'
     modal_header.innerHTML = `
-        <h2 class="modal_tit">Carrito.</h2>
+        <h2 class="carrito_titulo">Carrito</h2>
     `;
-    modal_container.append(modal_header);
-    const modal_boton = document.createElement('h3');
+    carrito_contenedor.append(modal_header);
+    const modal_boton = document.createElement('h4');
     modal_boton.innerText = 'x';
-    modal_boton.className = "modal_boton";
+    modal_boton.className = "carrito_boton";
+
+    modal_boton.addEventListener('click', ()=>{
+        carrito_contenedor.style.display = "none";
+    });
+
 
     modal_header.append(modal_boton);
 
     carrito.forEach((producto)=>{
         let carrito_contenido = document.createElement('div');
-        carrito_contenido.className = "modal-contenido";
+        carrito_contenido.className = "contenedor_carrito"
         carrito_contenido.innerHTML = `
-        <img src='${producto.imagen}'>
+        <div class="carrito_tarjetas">
         <h3>${producto.nombre}</h3>
+        <img class="carrito_img"src="${producto.imagen}">
         <h4>$ ${producto.precio}</h4>
+        </div>
         `;
-        modal_container.append(carrito_contenido)
+        carrito_contenedor.append(carrito_contenido)
     });
 
     const total = carrito.reduce((acc, el)=> acc + el.precio, 0);
@@ -64,5 +73,5 @@ ver_carrito.addEventListener("click", () =>{
     const total_compra = document.createElement('div')
     total_compra.className = "total_carrito"
     total_compra.innerHTML = `total a pagar: $${total}`;
-    modal_container.append(total_compra);
+    carrito_contenedor.append(total_compra);
 });
