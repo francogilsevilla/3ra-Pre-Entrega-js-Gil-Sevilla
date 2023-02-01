@@ -5,28 +5,20 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-nav {
+.contenedor_carrito{
     display: flex;
-    justify-content: space-around;
-    position: sticky;
-    z-index: 3;
-    top: 0;
+    justify-content: center;
 }
 
-ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-}
-
-
-
-a {
-    text-decoration: none;
-    font-size: 2rem;
+.carrito_boton{
+    text-align: center;
+    border-radius: 16px;
     background-color: black;
     color: white;
-    border-radius: 10px;
+    font-size: 1.9rem;
+    width: 200px;
+    cursor: pointer;
+    margin: 16px;
 }
 
 body {
@@ -72,93 +64,96 @@ a:hover {
     text-align: center;
 }
 
-.titulo_destacados {
+.titulo{
     text-align: center;
+    margin: 10px;
+    text-decoration: underline;
 }
 
-.contenedor_tarjetas{
+.contenedor_productos {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.tarjetas{
+.tarjetas {
     width: 300px;
-    height: 450px;
-    margin: 10px;
+    height: 375px;
     background-color: black;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
+    margin: 10px;
+    border-radius: 25px;
+    text-align: center;
 }
 
 .tarjetas_img {
-    width: 100%;
-    margin: 1px;
-    padding: 3px;
+    width: 200px;
+    height: 200px;
+    margin: auto;
     border-radius: 16px;
+    margin: 5px;
 }
 
-.tarjetas_h3 {
+.tarjetas_tit {
     font-size: 1.5em;
     margin: 10px;
+    padding: 10px;
     text-align: center;
-    color: antiquewhite;
+    color: white;
+    margin: 5px;
 }
 
-.tarjetas_h4 {
+.tarjetas_subtit {
     font-size: 1.2em;
-    margin: 10px;
     text-align: center;
     color: antiquewhite;
+    margin:5px
 }
 
-.tarjetas_button {
+.tarjetas_boton {
     background-color: grey;
     color: white;
     border-radius: 10px;
     cursor: pointer;
     width: 100px;
     text-align: center;
-    display: flex;
-    margin: auto;
 }
 
-.tarjetas_button:hover {
+.tarjetas_boton:hover {
     background-color: green;
     scale: 1.5;
 }
 
-.noticias{
+.noticias {
     text-align: center;
     font-size: 1.8rem;
     color: black;
 }
 
-.formulario{
+.formulario {
     display: flex;
     justify-content: space-evenly;
     color: black;
     margin: 15px;
-    padding:15px;
+    padding: 15px;
     text-decoration: underline;
 }
 
-.formulario label{
+.formulario label {
     width: 100px;
     height: auto;
     color: black;
     font-size: larger;
 }
 
-.formulario button{
+.formulario button {
     background-color: black;
     width: 100px;
     color: antiquewhite;
     text-decoration: none;
 }
-.formulario button:hover{
+
+.formulario button:hover {
     scale: 1.5;
     background-color: green;
     text-decoration: none;

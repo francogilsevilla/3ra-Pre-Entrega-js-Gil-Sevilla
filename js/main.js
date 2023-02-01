@@ -1,94 +1,68 @@
-const productos = [
-    {
-        id: 1,
-        nombre: 'Gabinete ROG',
-        precio: 20000,
-        imagen: '../assets/image/gabinete_1.jpg'
-    },
-    {
-        id: 2,
-        nombre: 'Gabinete Redragon',
-        precio: 15000,
-        imagen: "../assets/image/gabinete_2.jpg"
-    },
-    {
-        id: 3,
-        nombre:'Placa Gtx 1660 ti',
-        precio: 120000,
-        imagen: "../assets/image/grafica_1.jpg"
-    },
-    {
-        id: 4,
-        nombre:'Placa Aourus 2090 8gb',
-        precio: 220000,
-        imagen: "../assets/image/grafica_2.jpg"
-    },
-    {
-        id: 5,
-        nombre:'Intel Core I5',
-        precio: 35000,
-        imagen: "../assets/image/micro_1.jpg"
-    },
-    {
-        id: 6,
-        nombre:'Intel core I3',
-        precio: 60000,
-        imagen: "../assets/image/micro_2.jpg"
-    },
-    {
-        id: 7,
-        nombre:'Placa Madre Asrock',
-        precio: 15000,
-        imagen: "../assets/image/placa_base_1.jpg"
-    },
-    {
-        id: 8,
-        nombre:'Placa Madre Gigabyte',
-        precio: 10000,
-        imagen: "../assets/image/placa_base_2.jpg"
-    },
-    {
-        id: 9,
-        nombre:'RAM Fury 8gb',
-        precio: 24000,
-        imagen: "../assets/image/ram_1.jpg"
-    },
-    {
-        id: 10,
-        nombre:'Ram Crucial 4gb',
-        precio: 12000,
-        imagen: "../assets/image/ram_2.jpg"
-    },
-    {
-        id: 11,
-        nombre:'Fuente Gigabyte 1000w 80plus',
-        precio: 12000,
-        imagen: "../assets/image/fuente_1.jpg"
-    },
-    {
-        id: 12,
-        nombre:'Fuente 750w 80 plus',
-        precio: 5000,
-        imagen: "../assets/image/fuente_2.jpg"
-    }
-];
+const productos_html = document.getElementById('contenedor_productos');
+
+const ver_carrito = document.getElementById('ver_carrito');
+
+const modal_container = document.getElementById('modal_contenedor');
 
 let carrito = []
 
-const contenedor_tarjetas = document.getElementById('contenedor_productos');
+productos.forEach((producto)=>{
+    let contenido = document.createElement('article');
+    contenido.className = "tarjetas"
+    contenido.innerHTML =`
+    <h3 class="tarjetas_tit">${producto.nombre}</h3>
+    <img class="tarjetas_img"src="${producto.imagen}">
+    <h4 class="tarjetas_subtit">$ ${producto.precio}</h4>
+    `
 
+    productos_html.append(contenido);
 
-productos.forEach((producto => {
-    const tarjeta_producto = document.createElement('article');
-    tarjeta_producto.innerHTML = `
-        <article class="tarjetas">
-        <h3 class="tarjeta_h3">${producto.nombre}</h3>
-        <img scr="${producto.imagen}" class="tarjetas_img">
-        <h4 class="tarjeta_h4">${producto.precio}</h4>
-        <button class="tarjeta_button">Agregar al carrito</button>
-        </article>
+    let agregar_al_carrito = document.createElement('button')
+    agregar_al_carrito.className ="tarjetas_boton" 
+    agregar_al_carrito.innerText = 'Agregar al carrito';
+
+    contenido.append(agregar_al_carrito);
+
+    agregar_al_carrito.addEventListener("click", ()=>{
+        carrito.push({
+            id : producto.id,
+            imagen : producto.imagen,
+            nombre: producto.nombre,
+            precio: producto.precio,
+        });
+        console.log(carrito)
+    });
+});
+
+ver_carrito.addEventListener("click", () =>{
+    
+    const modal_header = document.createElement('div')
+    modal_header.className = 'modal_header'
+    modal_header.innerHTML = `
+        <h2 class="modal_tit">Carrito.</h2>
     `;
+    modal_container.append(modal_header);
+    const modal_boton = document.createElement('h3');
+    modal_boton.innerText = 'x';
+    modal_boton.className = "modal_boton";
 
-    contenedor_tarjetas.append(tarjeta_producto);
+    modal_header.append(modal_boton);
 
-}))
+    carrito.forEach((producto)=>{
+        let carrito_contenido = document.createElement('div');
+        carrito_contenido.className = "modal-contenido";
+        carrito_contenido.innerHTML = `
+        <img src='${producto.imagen}'>
+        <h3>${producto.nombre}</h3>
+        <h4>$ ${producto.precio}</h4>
+        `;
+        modal_container.append(carrito_contenido)
+    });
+
+    const total = carrito.reduce((acc, el)=> acc + el.precio, 0);
+
+    const total_compra = document.createElement('div')
+    total_compra.className = "total_carrito"
+    total_compra.innerHTML = `total a pagar: $${total}`;
+    modal_container.append(total_compra);
+});
