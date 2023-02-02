@@ -186,6 +186,10 @@ a:hover {
     background-color: grey;
 }
 
+.eliminar_producto{
+    cursor: pointer;
+}
+
 
 .noticias {
     text-align: center;
