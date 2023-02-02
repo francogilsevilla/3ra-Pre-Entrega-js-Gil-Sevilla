@@ -4,7 +4,13 @@ const ver_carrito = document.getElementById('ver_carrito');
 
 const carrito_contenedor = document.getElementById('carrito_contenedor');
 
-let carrito = []
+const enviar_datos = document.getElementById('boton_formulario');
+
+let carrito = [];
+
+if(localStorage.getItem('carrito')){
+    carrito = JSON.parse(localStorage.getItem('carrito'));
+};
 
 productos.forEach((producto)=>{
     let contenido = document.createElement('article');
@@ -23,6 +29,7 @@ productos.forEach((producto)=>{
 
     contenido.append(agregar_al_carrito);
 
+
     agregar_al_carrito.addEventListener("click", ()=>{
         carrito.push({
             id : producto.id,
@@ -30,6 +37,18 @@ productos.forEach((producto)=>{
             precio: producto.precio,
             imagen: producto.imagen,
         });
-        console.log(carrito)
+        localStorage.setItem("carrito", JSON.stringify(carrito));
     });
 });
+
+// En proceso capturar datos de email y nombre
+
+// enviar_datos.addEventListener('click' , () => {
+//     let nombre = getElementById('nombre').value ;
+//     let email = getElementById('email').value ;
+
+//     document.value = nombre;
+//     document.value = email;
+
+//     localStorage.setItem('datos', JSON.stringify(enviar_datos))
+// });
