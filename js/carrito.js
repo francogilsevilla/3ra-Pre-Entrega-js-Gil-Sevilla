@@ -18,7 +18,6 @@ const pintar_carrito = () => {
 
 
     modal_header.append(modal_boton);
-    console.log(carrito.length)
 
     carrito.forEach((producto) => {
         let carrito_contenido = document.createElement('div');
