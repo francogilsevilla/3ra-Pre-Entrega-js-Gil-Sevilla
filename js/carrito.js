@@ -18,6 +18,7 @@ const pintar_carrito = () => {
 
 
     modal_header.append(modal_boton);
+    console.log(carrito.length)
 
     carrito.forEach((producto) => {
         let carrito_contenido = document.createElement('div');
@@ -27,6 +28,8 @@ const pintar_carrito = () => {
         <h3>${producto.nombre}</h3>
         <img class="carrito_img"src="${producto.imagen}">
         <h4>$ ${producto.precio}</h4>
+        <p>Cantidad: ${producto.cantidad}</p>
+        <p>Total: ${producto.cantidad * producto.precio}</p>
         </div>
         `;
         carrito_contenedor.append(carrito_contenido);
@@ -39,7 +42,7 @@ const pintar_carrito = () => {
         eliminar.addEventListener("click", eliminar_del_carrito);
     });
 
-    const total = carrito.reduce((acc, el) => acc + el.precio, 0);
+    const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
 
     const total_compra = document.createElement('div')
     total_compra.className = "total_carrito"
@@ -56,5 +59,11 @@ const eliminar_del_carrito = () => {
         return carrito_id !== encontrar_id;
     });
     localStorage.setItem("carrito", JSON.stringify(carrito));
+    carrito_contador();
     pintar_carrito();
 };
+
+const carrito_contador = () => {
+    cantidad_carrito.style.display = "block";
+    cantidad_carrito.innerText = carrito.length;
+}

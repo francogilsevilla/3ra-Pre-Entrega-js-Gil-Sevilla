@@ -8,8 +8,6 @@
 .contenedor_carrito{
     display: flex;
     justify-content: center;
-    text-align: center;
-
 }
 
 .carrito_boton{
@@ -18,9 +16,19 @@
     background-color: black;
     color: white;
     font-size: 1.9rem;
-    width: 200px;
+    width: 100px;
     cursor: pointer;
     margin: 16px;
+}
+.cantidad_carrito{
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 4px;
+    top: 37px;
+    position: absolute;
+    display: none;
 }
 
 body {
